@@ -11,11 +11,11 @@ const {
 } = createElement;
 
 
-function renderTodo(htmlElement) {
+const renderTodo = (htmlElement) => {
   const list = document.querySelector('.table').querySelector('tbody');
   console.log(list);
   list.insertAdjacentElement("beforeend",  htmlElement);
-}
+};
 
  
 

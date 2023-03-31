@@ -19,7 +19,7 @@ const {
 
 const { renderTodo } = render;
  
-function addEventListeners () {
+const addEventListeners = () => {
   const form = document.querySelector('form');
   console.log(form)
   const input = form.querySelector('input');
@@ -27,9 +27,9 @@ function addEventListeners () {
     e.preventDefault();
     createTask(input.value);
   })
-}
+};
 
-function createTask (text, id, status) {
+const createTask = (text, id, status) => {
     let tempId = id || Math.random().toString().substring(2, 10);
     let tempStatus = status || false;
     const row = createRow(tempId, text, tempStatus);
@@ -57,14 +57,14 @@ function createTask (text, id, status) {
   console.log("created row", row);
 }
 
-function addInputListener(form) {
+const addInputListener = (form) => {
   const input = form.querySelector('input');
   input.addEventListener('input', (e) => {
     form.querySelector('.btn-primary').disabled = !input.value.trim();
   })
-}
+};
 
-function addCreateTaskListener(form) {
+const addCreateTaskListener = (form) => {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const input = form.querySelector('input');
@@ -74,7 +74,7 @@ function addCreateTaskListener(form) {
   })
 }
 
-function renderTodoFromLocalStorage(userName) {
+const renderTodoFromLocalStorage = (userName) => {
   if(getStorage(userName).length > 0) {
     getStorage(userName).forEach((el) => {
       renderTodo(createTask(el.text, el.id, el.status));
@@ -82,14 +82,14 @@ function renderTodoFromLocalStorage(userName) {
   }
 }
 
-function authorizeUser() {
+const authorizeUser = () => {
   const userName = getUserName();
   renderTodoFromLocalStorage(userName);
 }
 
-function getUserName() {
+const getUserName = () => {
   return document.querySelector('#username').innerHTML;
-}
+};
  
  
 export const control = {createTask, addEventListeners, addCreateTaskListener, addInputListener, authorizeUser};
