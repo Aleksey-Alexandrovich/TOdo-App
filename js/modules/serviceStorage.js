@@ -13,17 +13,11 @@ export const removeFromStorage = (key, id) => {
 };
 
 export const toggleStatusInStorage = (key, id) => {
-  let prevArray = getStorage(key);
-  let task = prevArray.findIndex((item) => item.id === id);
+  const prevArray = getStorage(key);
+  const task = prevArray.findIndex((item) => item.id === id);
   prevArray[task].status = !prevArray[task].status;
   localStorage.setItem(key, JSON.stringify(prevArray));
 };
-
-const task = {
-  id: 12e21312,
-  title: 'Задача 1',
-  status: true, //выполнена
-}
 
 export const serviceStorage = {
   getStorage,
@@ -31,9 +25,3 @@ export const serviceStorage = {
   removeFromStorage,
   toggleStatusInStorage,
 };
-
-// export default {
-//   getStorage,
-//   setStorage: addToStorage,
-//   removeStorage: removeFromStorage,
-// };
